@@ -1,0 +1,6 @@
+# Private settings and exports
+.env
+.env.*
+*credentials*
+*secrets*
+private/

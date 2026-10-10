@@ -1,57 +1,60 @@
 # Automated Appointment Scheduling & Confirmation System
 
-Overview
+A no-code scheduling workflow built with **Zapier**, **Google Forms**, **Google Calendar**, and **Gmail**. When someone submits an appointment request, the Zap creates a detailed calendar event using the submitted fields and then runs a Gmail **Send Email** action for initial appointment communication.
 
-A no-code appointment scheduling automation built using Zapier and Google Workspace tools.
+> **Scope:** This project handles an initial confirmation or invitation, **not** a separate advance reminder. The screenshots show the configured workflow and tested Zap steps.
+## Workflow
 
-The project streamlines the appointment booking process by connecting Google Forms, Google Calendar, and Gmail to automate scheduling and initial appointment communication.
+```text
+Google Forms — New Form Response (trigger)
+           ↓
+Google Calendar — Create Detailed Event (action)
+           ↓
+Gmail — Send Email (action)
+```
 
-Technologies Used
+![Three-step Zap workflow](screenshots/workflow-overview.png)
 
-- **Zapier** — Workflow automation and application integration
-- **Google Forms** — Collecting appointment requests
-- **Google Calendar** — Creating and managing appointment events
-- **Gmail** — Appointment confirmation and communication
+## Implementation details
 
-How It Works
+1. **Trigger:** Zapier listens for a **New Form Response** in Google Forms.
+2. **Calendar action:** **Create Detailed Event** adds a new event to an appointment calendar. The event's summary includes the submitted name, and the description maps the appointment type, phone number, and notes from the form response.
+3. **Email action:** A Gmail **Send Email** step provides initial appointment communication. The provided screenshots show the action and test status, but not its recipient/subject/body configuration.
 
-1. A user submits an appointment request through Google Forms.
-2. Zapier detects the new form submission.
-3. The workflow uses the submitted information to create an appointment in Google Calendar.
-4. An initial appointment confirmation or invitation is sent.
-5. The appointment is available on the calendar for scheduling and management.
+## Tools and skills
 
-Implementation
+| Tool | Role |
+| --- | --- |
+| Google Forms | Appointment request input |
+| Zapier | Trigger-action orchestration and field mapping |
+| Google Calendar | Detailed appointment event creation |
+| Gmail | Initial email communication |
 
-- Created an appointment request form to collect scheduling information.
-- Connected Google Forms with Zapier.
-- Configured automated actions for calendar scheduling and email communication.
-- Tested and validated the workflow using sample appointment requests.
-- Designed the process to operate with minimal manual intervention after setup.
+**Skills demonstrated:** workflow automation, SaaS application integration, event-driven triggers, field mapping, system testing, and documentation.
 
-Technical Skills Demonstrated
+## Screenshots
 
-- Workflow automation
-- Application integration
-- Trigger-action logic
-- Data mapping between services
-- Automated calendar scheduling
-- System testing and validation
-- Technical documentation
+- [Full workflow](screenshots/workflow-overview.png)
+- [Google Forms trigger](screenshots/google-forms-trigger.png)
+- [Calendar event configuration](screenshots/calendar-event-action.png)
+- [Gmail action](screenshots/gmail-action.png)
 
-Project Demonstration
+The screenshots have been **redacted to remove identifiable contact and appointment details**. Do not commit account credentials, real client records, exported test payloads, or private Zap links.
 
-Screenshots of the appointment request form, calendar event, and email invitation are available in the `screenshots/` directory.
+## Recreate the workflow
 
-Future Improvements
+1. Create a Google Form that collects appointment request details.
+2. In Zapier, create a Zap with **Google Forms → New Form Response** as the trigger, connecting your own account.
+3. Add **Google Calendar → Create Detailed Event** and map the form's responses into the event fields. Configure time and date fields to match your form.
+4. Add **Gmail → Send Email** and configure the intended recipient, confirmation subject, and message using your own test data.
+5. Test all steps with fictional sample data, verify the calendar entry and message, then publish/enable the Zap if appropriate.
 
-- Automated reminders before scheduled appointments
-- Appointment cancellation and rescheduling
-- Duplicate booking prevention
-- Error handling and failure notifications
-- Scheduling conflict detection
+This repository is **documentation**, not an importable Zap or source-code implementation. Exact email mappings and some calendar field settings are not included in the provided screenshots.
 
-Project Status
+## Potential improvements
 
-Working prototype demonstrating automated appointment scheduling and initial confirmation.
-
+- Add separate advance reminders.
+- Check for scheduling conflicts and duplicate requests.
+- Add input validation and error alerts.
+- Support cancellation and rescheduling.
+- Reduce storage of personal information in calendar descriptions where possible.
